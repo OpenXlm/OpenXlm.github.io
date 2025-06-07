@@ -1,240 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenXLM - Stellar Blockchain Trading</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #764ba2; 
-            --secondary: #667eea;
-            --accent: #42b883;
-            --bg: #f8f9fa;
-            --text: #2c3e50;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .price-widget {
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            display: inline-block;
-        }
-
-        .price-title {
-            font-size: 1.2rem;
-            color: var(--text);
-            margin-bottom: 0.5rem;
-        }
-
-        .price-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .trade-btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: linear-gradient(45deg, var(--accent), #2c3e50);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 2rem;
-        }
-
-        .trade-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 4rem 0;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 4rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 2rem 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OpenXLM | Stellar Blockchain Tokens</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/feather-icons"></script> 
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css"  rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script> 
 </head>
-<script>
-    // Animate sections on scroll
-    const aboutContents = document.querySelectorAll('.fade-in');
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, {
-        threshold: 0.2
-    });
-
-    aboutContents.forEach(content => {
-        observer.observe(content);
-    });
-
-    // Set current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-</script>
 <body>
-    <header>
-        <h1>OpenXLM</h1>
-        <h3>Trade Stellar Lumens (XLM) Assets Across the Stellar Blockchain</h3>
-<p>OpenXLM is a decentralized gateway to the world of Stellar Lumens (XLM) and blockchain-based digital assets. Built on the Stellar Network , OpenXLM empowers users to seamlessly trade, send, and manage XLM and other tokenized assets across one of the fastest, most secure, and cost-efficient blockchains in the world.
-<p>
-    </header>
+  <!-- Animated Background -->
+  <div class="stars"></div>
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">OpenXLM <span>🚀</span></div>
+    <nav class="nav">
+      
+    </nav>
+  </header>
 
-   <section class="hero">
-        <div class="price-widget">
-            <div class="price-title">XLM/USD Live Price</div>
-            <div id="price" class="price-value">Loading...</div>
-        </div>
-        
-        <button class="trade-btn" onclick="window.location.href='#trade-section'">🚀 Start Trading</button>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero" data-aos="fade-up">
+    <h1>Invest in Stellar Blockchain Tokens</h1>
+    <p>Secure, Scalable, and Profitable Digital Assets for the Future</p>
+    <button onclick="window.location.href='#'" class="cta-btn">Explore Token Market →</button>
+  </section>
 
-    <section class="container" id="trade-section">
-        <div class="features">
-            <div class="feature-card">
-                <h3>Fast Transactions</h3>
-                <p>Send and receive XLM in seconds across the Stellar network</p>
-            </div>
-            <div class="feature-card">
-                <h3>Low Fees</h3>
-                <p>Transaction fees less than $0.00001</p>
-            </div>
-            <div class="feature-card">
-                <h3>Secure</h3>
-                <p>Bank-grade security with decentralized blockchain technology</p>
-            </div>
-        </div>
-    </section>
-
-<!-- About Section -->
-<section class="container about-section" id="about">
-    <h2 class="section-title">What is OpenXLM?</h2>
-    <div class="about-content fade-in">
-        <i class="fas fa-star icon"></i>
-        <p><strong>OpenXLM</strong> is a decentralized gateway to the world of <strong>Stellar Lumens (XLM)</strong> and blockchain-based digital assets. Built on the Stellar Network, OpenXLM empowers users to seamlessly trade, send, and manage XLM and other tokenized assets across one of the fastest, most secure, and cost-efficient blockchains in the world.</p>
+  <!-- About Blockchain -->
+  <section id="about" class="about-section" data-aos="fade-up">
+    <h2>What is Blockchain?</h2>
+    <p>Blockchain is a decentralized digital ledger that records transactions across a global network of computers. Stellar (XLM) is a high-speed, low-cost blockchain platform designed for financial innovation, making it ideal for token investments.</p>
+    <div class="icon-grid">
+      <div class="icon-box"><i data-feather="lock"></i> <p>Decentralized Security</p></div>
+      <div class="icon-box"><i data-feather="zap"></i> <p>Lightning-Fast Transactions</p></div>
+      <div class="icon-box"><i data-feather="dollar-sign"></i> <p>Low Fees</p></div>
     </div>
+  </section>
 
-    <div class="about-content fade-in delay-1">
-        <i class="fas fa-network-wired icon"></i>
-        <p><strong>The Stellar blockchain</strong> is an open-source, decentralized protocol designed to facilitate fast, cross-border transactions and enable the issuance of custom digital assets. With near-instant settlement times and fees less than a penny, Stellar provides a scalable and inclusive financial infrastructure for the future.</p>
+
+  <!-- Footer -->
+  <footer id="contact" class="footer">
+    <div class="footer-content">
+      <p>&copy; OpenXLM - All rights reserved.</p>
+      <div class="socials">
+        <a href="#"><i data-feather="twitter"></i></a>
+        <a href="#"><i data-feather="linkedin"></i></a>
+        <a href="#"><i data-feather="mail"></i></a>
+      </div>
     </div>
+  </footer>
 
-    <div class="about-content fade-in delay-2">
-        <i class="fas fa-chart-line icon"></i>
-        <p>At the heart of the network is <strong>XLM (Lumens)</strong>, the native cryptocurrency that secures the network and enables frictionless value transfer across borders and currencies.</p>
-    </div>
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script> 
+  <script>
+    AOS.init();
+    feather.replace();
+  </script>
 
-    <div class="about-content fade-in delay-3">
-        <i class="fas fa-money-bill-wave icon"></i>
-        <p><strong>Why Trade Assets on OpenXLM?</strong></p>
-        <ul class="features-list">
-            <li><i class="fas fa-check-circle"></i> Trade XLM & Tokens — Access to Stellar-based tokens (SPL-T) and XLM trading pairs</li>
-            <li><i class="fas fa-check-circle"></i> Real-Time Data — Live price tracking and market updates directly from trusted APIs</li>
-            <li><i class="fas fa-check-circle"></i> Decentralized Security — Benefit from Stellar's robust consensus mechanism and distributed ledger</li>
-            <li><i class="fas fa-check-circle"></i> Low-Cost Transactions — Move assets at a fraction of a cent per transaction</li>
-            <li><i class="fas fa-check-circle"></i> Transparent & Trustless — No intermediaries. Just peer-to-peer value exchange powered by blockchain</li>
-        </ul>
-    </div>
+<canvas id="bgCanvas"></canvas>
 
-</section>
+<script>
+  let scene, camera, renderer, stars = [];
 
-    <footer>
-        <p>&copy; <span id="year"></span> OpenXLM. All rights reserved.</p>
-    </footer>
+  init();
+  animate();
 
-    <script>
-        // Live price update from CoinGecko API
-        async function updatePrice() {
-            try {
-                const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=stellar&vs_currencies=usd');
-                const data = await res.json();
-                document.getElementById('price').textContent = `$${data.stellar.usd.toFixed(4)}`;
-            } catch (error) {
-                document.getElementById('price').textContent = 'Error loading price';
-                console.error('Error fetching price:', error);
-            }
-        }
+  function init() {
+    // Scene setup
+    scene = new THREE.Scene();
 
-        // Update price every 30 seconds
-        setInterval(updatePrice, 30000);
-        updatePrice();
+    // Camera setup
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 5;
 
-        // Set current year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+    // Renderer setup
+    renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bgCanvas'), antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setClearColor(0x0b0c2a); // matches your theme
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Add stars
+    const geometry = new THREE.BufferGeometry();
+    const starCount = 8000;
+    const vertices = [];
+
+    for (let i = 0; i < starCount; i++) {
+      const x = THREE.MathUtils.randFloatSpread(1000);
+      const y = THREE.MathUtils.randFloatSpread(1000);
+      const z = THREE.MathUtils.randFloatSpread(1000);
+      vertices.push(x, y, z);
+    }
+
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+    const material = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 1.5
+    });
+
+    const starsMesh = new THREE.Points(geometry, material);
+    scene.add(starsMesh);
+
+    // Mouse movement effect
+    document.addEventListener('mousemove', onMouseMove, false);
+  }
+
+  function onMouseMove(event) {
+    const mouseX = (event.clientX - window.innerWidth / 2) * 0.001;
+    const mouseY = (event.clientY - window.innerHeight / 2) * 0.001;
+    camera.rotation.y = mouseX;
+    camera.rotation.x = mouseY;
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    scene.rotation.z += 0.0005;
+    renderer.render(scene, camera);
+  }
+</script>
+
 </body>
 </html>
