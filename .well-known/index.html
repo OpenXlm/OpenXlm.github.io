@@ -28,21 +28,7 @@
 
   <script type="text/babel">
 
-    const App = () => {
-      const [xlmPrice, setXlmPrice] = React.useState(0.12);
-      const [priceChange, setPriceChange] = React.useState(0);
-
-      React.useEffect(() => {
-        const interval = setInterval(() => {
-          const change = (Math.random() - 0.5) * 0.02;
-          setXlmPrice(prev => Math.max(0.01, prev + change));
-          setPriceChange(change);
-          setTimeout(() => setPriceChange(0), 1000);
-        }, 5000);
-        return () => clearInterval(interval);
-      }, []);
-
-      return (
+    
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white">
           {/* Animated Background */}
           <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
