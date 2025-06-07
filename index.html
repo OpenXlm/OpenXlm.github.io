@@ -1,187 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-sdk/8.2.5/stellar-sdk.js"></script>
 <head>
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenXLM - Stellar Blockchain Trading</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #764ba2; 
+            --secondary: #667eea;
+            --accent: #42b883;
+            --bg: #f8f9fa;
+            --text: #2c3e50;
+        }
 
-    <title> YXRP - </title>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
-    <!-- Custom CSS -->
-    <link href="css/grayscale.css" rel="stylesheet">
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
 
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 0;
+            text-align: center;
+        }
 
+        .price-widget {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: inline-block;
+        }
+
+        .price-title {
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .trade-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, var(--accent), #2c3e50);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .trade-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem 0;
+            }
+        }
+    </style>
 </head>
+<script>
+    // Animate sections on scroll
+    const aboutContents = document.querySelectorAll('.fade-in');
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i>  <span class="light">YXRP</span> SPECIAL 
-                </a>
-            </div>
+    aboutContents.forEach(content => {
+        observer.observe(content);
+    });
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from privacy link when scrolled up past privacy section -->
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#issuer">Issuer ID</a>GC2VIJVUOZZ53MBSJFO5PTLWNDWMITTEOUACIOBDN2I3N4SLANINXRA2
-
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Intro Header -->
-    <header class="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading"></h1>
-                        <p class="intro-text"></p>
-                        <a href="#about" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<body>
+    <header>
+        <h1>OpenXLM</h1>
+        <h3>Trade Stellar Lumens (XLM) Assets Across the Stellar Blockchain</h3>
+<p>OpenXLM is a decentralized gateway to the world of Stellar Lumens (XLM) and blockchain-based digital assets. Built on the Stellar Network , OpenXLM empowers users to seamlessly trade, send, and manage XLM and other tokenized assets across one of the fastest, most secure, and cost-efficient blockchains in the world.
+<p>
     </header>
 
-    <!-- about Section -->
-    <section id="about" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>About</h2>
-                <p>Depicted Certainly! Let's talk about **Stellar (XLM)**, a fascinating cryptocurrency:
+   <section class="hero">
+        <div class="price-widget">
+            <div class="price-title">XLM/USD Live Price</div>
+            <div id="price" class="price-value">Loading...</div>
+        </div>
+        
+        <button class="trade-btn" onclick="window.location.href='#trade-section'">🚀 Start Trading</button>
+    </section>
 
-**Stellar (XLM)** is a **peer-to-peer decentralized network** created in 2014 by The Stellar Development Foundation (or Stellar.org). Its official launch occurred in 2015 with the mission of connecting the world's financial systems and establishing a protocol for payment providers and financial institutions. Here are the key points about Stellar:
-
-1. **Purpose**: Stellar aims to move financial resources swiftly and reliably at minimal cost. It bridges people, banks, and payment processors, allowing users to create, send, and trade various types of crypto.
-
-2. **Native Currency**: The basis of the Stellar network is its native digital currency, known as **XLM** or **Lumens**. XLM acts as an intermediate currency for operations and is also used to pay transaction fees.
-
-3. **How It Works**: The Stellar payment protocol is based on **distributed ledger technology**. When a transaction occurs, money is first converted into XLM and then into the requested currency. This process ensures efficient cross-border transactions, overcoming high fees and slow procedures.
-
-4. **Decentralized Exchange**: Stellar serves as a **decentralized exchange and marketplace**. It has a built-in order book that tracks ownership of Stellar assets. Users can manage buy/sell orders and select preferred assets for settlements.
-
-5. **Security and Nuances**:
-    - **High Security**: Stellar maintains a high level of security. XLM holders must have at least one token to remain active on the network.
-    - **Protection Against Attacks**: Lumens offer protection against flood attacks by making microtransactions too expensive for hackers, ensuring the safety of the Stellar Network.
-
-6. **Target Audience**: Stellar primarily targets inhabitants of developing countries, providing them access to the global economy through fast, simple, and inexpensive transactions.
-
-7. **Currency Conversion**: Stellar extensively uses Lumens to facilitate live conversions and send cash in multiple currencies. For example, currency sent from one peer can be received in another currency, even when there are no widely traded pairs.
-
-**Current Status**: As of now, the live Stellar price is approximately **$0.1362 USD**, with a 24-hour trading volume of **$251.6 million USD**. Stellar ranks #33 in terms of market capitalization, with a live market cap of **$3.9 billion USD**¹².
-
-So, if you're interested in Lumens (XLM), you're diving into a fascinating world of decentralized finance and global connectivity! 🌟🚀
-
-Source: Conversation with Bing, 05/03/2024
-(1) Stellar price today, XLM to USD live price, marketcap and chart .... https://coinmarketcap.com/currencies/stellar/.
-(2) Stellar Price | XLM Live Price Index and Chart- CoinDesk. https://www.coindesk.com/price/stellar/.
-(3) Stellar Cryptocurrency Definition, History & Future - Investopedia. https://www.investopedia.com/terms/s/stellar-cryptocurrency.asp.
-(4) Stellar Lumens (XLM) Explained - The Balance. https://www.thebalancemoney.com/stellar-lumens-xlm-explained-5194038.
-(5) Lumens (XLM) | Stellar Docs. https://developers.stellar.org/docs/fundamentals-and-concepts/lumens.
-(6) Stellar | Stellar Lumens. https://stellar.org/learn/lumens.  .”</p>
-                <a href="" class="btn btn-default btn-lg">This YXRP </a>
+    <section class="container" id="trade-section">
+        <div class="features">
+            <div class="feature-card">
+                <h3>Fast Transactions</h3>
+                <p>Send and receive XLM in seconds across the Stellar network</p>
+            </div>
+            <div class="feature-card">
+                <h3>Low Fees</h3>
+                <p>Transaction fees less than $0.00001</p>
+            </div>
+            <div class="feature-card">
+                <h3>Secure</h3>
+                <p>Bank-grade security with decentralized blockchain technology</p>
             </div>
         </div>
     </section>
 
-    <!-- issuer Section -->
-    <section id="issuer" class="content-section text-center">
-        <div class="download-section">
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h2>Asset Code: YXRP</h2>
-                    <p>1,000,000,000 Stellar asset (FIXED) have been minted.</p>
-                    <a href="" class="btn btn-default btn-lg">Stellar Reword</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- About Section -->
+<section class="container about-section" id="about">
+    <h2 class="section-title">What is OpenXLM?</h2>
+    <div class="about-content fade-in">
+        <i class="fas fa-star icon"></i>
+        <p><strong>OpenXLM</strong> is a decentralized gateway to the world of <strong>Stellar Lumens (XLM)</strong> and blockchain-based digital assets. Built on the Stellar Network, OpenXLM empowers users to seamlessly trade, send, and manage XLM and other tokenized assets across one of the fastest, most secure, and cost-efficient blockchains in the world.</p>
+    </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Contact Stellar Reword</h2>
-                <p>Feel free to email us to provide some feedback, or to just say hello!</p>
-                <p><a href="mailto:istoken1@gmail.com">token1@gmail.com</a>
-                </p>
-            </div>
-        </div>
-    </section>
+    <div class="about-content fade-in delay-1">
+        <i class="fas fa-network-wired icon"></i>
+        <p><strong>The Stellar blockchain</strong> is an open-source, decentralized protocol designed to facilitate fast, cross-border transactions and enable the issuance of custom digital assets. With near-instant settlement times and fees less than a penny, Stellar provides a scalable and inclusive financial infrastructure for the future.</p>
+    </div>
 
-    <!-- Map Section -->
+    <div class="about-content fade-in delay-2">
+        <i class="fas fa-chart-line icon"></i>
+        <p>At the heart of the network is <strong>XLM (Lumens)</strong>, the native cryptocurrency that secures the network and enables frictionless value transfer across borders and currencies.</p>
+    </div>
+
+    <div class="about-content fade-in delay-3">
+        <i class="fas fa-money-bill-wave icon"></i>
+        <p><strong>Why Trade Assets on OpenXLM?</strong></p>
+        <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> Trade XLM & Tokens — Access to Stellar-based tokens (SPL-T) and XLM trading pairs</li>
+            <li><i class="fas fa-check-circle"></i> Real-Time Data — Live price tracking and market updates directly from trusted APIs</li>
+            <li><i class="fas fa-check-circle"></i> Decentralized Security — Benefit from Stellar's robust consensus mechanism and distributed ledger</li>
+            <li><i class="fas fa-check-circle"></i> Low-Cost Transactions — Move assets at a fraction of a cent per transaction</li>
+            <li><i class="fas fa-check-circle"></i> Transparent & Trustless — No intermediaries. Just peer-to-peer value exchange powered by blockchain</li>
+        </ul>
+    </div>
+
+</section>
+
     <footer>
-        <div class="container text-center">
-            <p>Stellar Rewardtokens are issued on Stellar. The project is unaffiliated with the Stellar Development Foundation.</p>
-        </div>
+        <p>&copy; <span id="year"></span> OpenXLM. All rights reserved.</p>
     </footer>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container text-center">
-            <p>Copyright &copy; YXRP</p>
-        </div>
-    </footer>
+    <script>
+        // Live price update from CoinGecko API
+        async function updatePrice() {
+            try {
+                const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=stellar&vs_currencies=usd');
+                const data = await res.json();
+                document.getElementById('price').textContent = `$${data.stellar.usd.toFixed(4)}`;
+            } catch (error) {
+                document.getElementById('price').textContent = 'Error loading price';
+                console.error('Error fetching price:', error);
+            }
+        }
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+        // Update price every 30 seconds
+        setInterval(updatePrice, 30000);
+        updatePrice();
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
-
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
-
 </html>
-
