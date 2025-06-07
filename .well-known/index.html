@@ -23,12 +23,6 @@
   </style>
 </head>
 <body class="min-h-screen bg-gray-900 text-white">
-
-  <div id="root"></div>
-
-  <script type="text/babel">
-
-  
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white">
           {/* Animated Background */}
           <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
@@ -130,8 +124,6 @@
             </div>
           </section>
 
-          {/* Rest of the sections are included similarly as per original code... */}
-
           {/* Footer */}
           <footer className="relative z-10 container mx-auto px-6 py-12">
             <div className="grid md:grid-cols-4 gap-8">
@@ -207,14 +199,13 @@
             </div>
 
             <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-              <p>&copy; <span id="year"></span> StellarToken. All rights reserved.</p>
+              <p>&copy; All rights reserved.</p>
             </div>
           </footer>
         </div>
       );
     };
-// Set current year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
+
     ReactDOM.render(<App />, document.getElementById('root'));
   </script>
 </body>
