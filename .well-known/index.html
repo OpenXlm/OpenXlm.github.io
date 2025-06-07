@@ -252,7 +252,8 @@
         </div>
       );
     };
-
+// Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
     ReactDOM.render(<App />, document.getElementById('root'));
   </script>
 </body>
