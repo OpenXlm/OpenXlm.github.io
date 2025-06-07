@@ -1,4 +1,251 @@
-<section class="container" id="about">
-    <h2>What is OpenXLM?</h2>
-    <p>OpenXLM is a decentralized gateway to the world of Stellar Lumens (XLM) and blockchain-based digital assets...</p>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stellar Token Platform</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script> 
+
+  <!-- React & ReactDOM CDNs -->
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script> 
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script> 
+
+  <!-- Babel for JSX support in browser -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
+
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: white;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-900 text-white">
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    const App = () => {
+      const [xlmPrice, setXlmPrice] = React.useState(0.12);
+      const [priceChange, setPriceChange] = React.useState(0);
+
+      React.useEffect(() => {
+        const interval = setInterval(() => {
+          const change = (Math.random() - 0.5) * 0.02;
+          setXlmPrice(prev => Math.max(0.01, prev + change));
+          setPriceChange(change);
+          setTimeout(() => setPriceChange(0), 1000);
+        }, 5000);
+        return () => clearInterval(interval);
+      }, []);
+
+      return (
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white">
+          {/* Animated Background */}
+          <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-pink-500 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+          </div>
+
+          {/* Navigation */}
+          <nav className="relative z-10 container mx-auto px-6 py-6 flex justify-between items-center">
+            <div className="flex items-center space-x-2">
+              <svg className="w-8 h-8 text-purple-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span className="font-bold text-xl">OpenXLM</span>
+            </div>
+            <div className="hidden md:flex space-x-8">
+            </div>
+            <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full transition duration-300">
+              Connect Wallet
+            </button>
+          </nav>
+
+          {/* Hero Section */}
+          <section className="relative z-10 container mx-auto px-6 py-20 md:py-32 flex flex-col items-center text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+              Invest in Stellar Blockchain Tokens
+            </h1>
+            <p className="text-xl md:text-2xl max-w-3xl mb-8 opacity-80">
+              Buy, Sell, and Exchange Stellar Lumens (XLM) with confidence. Join the future of decentralized finance.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full text-lg font-medium transition duration-300 transform hover:scale-105">
+                Buy Tokens
+              </button>
+              <button className="bg-transparent border-2 border-purple-400 hover:bg-purple-900 text-white px-8 py-3 rounded-full text-lg font-medium transition duration-300 transform hover:scale-105">
+                Learn More
+              </button>
+            </div>
+ <div class="price-widget">
+            <div class="price-title">XLM/USD Live Price</div>
+            <div id="price" class="price-value">Loading...</div>
+          </section>
+
+
+          {/* About Blockchain Section */}
+          <section id="about" className="relative z-10 container mx-auto px-6 py-20">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">What is Blockchain?</h2>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-gray-700">
+                <h3 className="text-2xl font-bold mb-4">Understanding Blockchain Technology</h3>
+                <p className="mb-4">
+                  Blockchain is a revolutionary technology that enables secure, transparent, and tamper-proof record keeping across a distributed network of computers.
+                </p>
+                <p className="mb-4">
+                  In the case of Stellar, it's specifically designed for fast, low-cost cross-border payments and asset transfers. The Stellar network uses its native cryptocurrency, Lumens (XLM), to facilitate transactions between different currencies.
+                </p>
+                <p>
+                  With blockchain technology, every transaction is recorded on a decentralized ledger, making it nearly impossible to alter or delete records without consensus from the network participants.
+                </p>
+              </div>
+              <div className="relative">
+                <div className="absolute -top-6 -left-6 w-full h-full bg-purple-600 rounded-2xl filter blur-xl opacity-20"></div>
+                <div className="relative bg-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700">
+                  <h3 className="text-2xl font-bold mb-6">Why Choose Stellar?</h3>
+                  <ul className="space-y-4">
+                    <li className="flex items-start">
+                      <svg className="w-6 h-6 text-purple-400 mr-3 mt-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      <span>Fast transactions (5 seconds confirmation time)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg className="w-6 h-6 text-purple-400 mr-3 mt-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      <span>Negligible transaction fees (fractions of a cent)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg className="w-6 h-6 text-purple-400 mr-3 mt-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      <span>Decentralized network with high security</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg className="w-6 h-6 text-purple-400 mr-3 mt-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      <span>Interoperability with different currencies</span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg className="w-6 h-6 text-purple-400 mr-3 mt-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      <span>Open-source platform with active development</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Footer */}
+          <footer className="relative z-10 container mx-auto px-6 py-12">
+            <div className="grid md:grid-cols-4 gap-8">
+              <div>
+                <div className="flex items-center space-x-2 mb-4">
+                  <svg className="w-8 h-8 text-purple-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <span className="font-bold text-xl">StellarToken</span>
+                </div>
+                <p className="text-gray-400 mb-4">
+                  Invest in the future of decentralized finance with Stellar blockchain tokens.
+                </p>
+                <div className="flex space-x-4">
+                  <a href="#" className="text-gray-400 hover:text-white transition duration-300">
+                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M17 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V9H7V12H10V22H13V12H16L17 9H13V7C13 6.46957 13.2107 5.96086 13.5858 5.58579C13.9609 5.21071 14.4696 5 15 5H17V2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
+                  <a href="#" className="text-gray-400 hover:text-white transition duration-300">
+                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M23 3.00005C22.0424 3.67552 20.9821 4.19216 19.86 4.53005C19.2577 3.83758 18.4498 3.34521 17.551 3.12385C16.6522 2.90249 15.7079 2.96306 14.8488 3.29763C13.9897 3.6322 13.2577 4.22456 12.75 5.00005C12.2423 5.77554 11.9835 6.69025 12 7.63005V8.63005C10.2426 8.67863 8.50127 8.26016 6.93101 7.40886C5.36074 6.55756 4.01032 5.29956 3 3.76005C3 3.76005 -1 13 8 17C5.94053 18.398 3.48716 19.0989 1 19C10 24 21 19 21 7.50005V3.00005H23Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
+                  <a href="#" className="text-gray-400 hover:text-white transition duration-300">
+                    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M17 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V9H7V12H10V22H13V12H16L17 9H13V7C13 6.46957 13.2107 5.96086 13.5858 5.58579C13.9609 5.21071 14.4696 5 15 5H17V2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <div>
+                <h4 className="text-lg font-bold mb-4">Quick Links</h4>
+                <ul className="space-y-2">
+                  <li><a href="#about" className="text-gray-400 hover:text-white transition duration-300">About Stellar</a></li>
+                  <li><a href="#tokens" className="text-gray-400 hover:text-white transition duration-300">Buy Tokens</a></li>
+                  <li><a href="#exchange" className="text-gray-400 hover:text-white transition duration-300">Exchange</a></li>
+                  <li><a href="#profits" className="text-gray-400 hover:text-white transition duration-300">Investment Potential</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-lg font-bold mb-4">Resources</h4>
+                <ul className="space-y-2">
+                  <li><a href="#" className="text-gray-400 hover:text-white transition duration-300">FAQ</a></li>
+                  <li><a href="#" className="text-gray-400 hover:text-white transition duration-300">Support</a></li>
+                  <li><a href="#" className="text-gray-400 hover:text-white transition duration-300">Documentation</a></li>
+                  <li><a href="#" className="text-gray-400 hover:text-white transition duration-300">Terms of Service</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-lg font-bold mb-4">Contact Us</h4>
+                <ul className="space-y-2">
+                  <li className="flex items-center">
+                    <svg className="w-5 h-5 mr-2 text-gray-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3 8L10.89 13.26C11.2187 13.4717 11.599 13.5896 11.99 13.6C12.381 13.5896 12.7613 13.4717 13.09 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <span>support@stellartoken.com</span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg className="w-5 h-5 mr-2 text-gray-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M22 16.92V19.92C21.9988 20.1981 21.9402 20.472 21.8287 20.723C21.7172 20.9741 21.5557 21.1963 21.3544 21.3745C21.1532 21.5527 20.9165 21.6829 20.6597 21.7558C20.4029 21.8287 20.1318 21.8426 19.864 21.8C17.414 21.4 12.944 19.82 9.21401 15.69C5.62401 11.73 4.13401 7.33 3.80401 4.92C3.73629 4.6505 3.72774 4.36987 3.77906 4.09864C3.83037 3.82741 3.94023 3.57252 4.10033 3.35307C4.26042 3.13361 4.46654 2.95552 4.70288 2.83241C4.93923 2.7093 5.20006 2.64462 5.46401 2.64401H8.46401C8.79474 2.65021 9.1121 2.75809 9.37601 2.95201C9.77601 3.28201 10.324 3.87201 10.724 4.39201C11.0821 4.85511 11.3576 5.38378 11.536 5.95201C11.6097 6.19763 11.6097 6.46038 11.536 6.70601C11.3665 7.24721 11.0668 7.73991 10.664 8.14201L9.44401 9.30201C10.5592 11.5811 12.4189 13.4409 14.698 14.556L15.858 13.336C16.2601 12.9332 16.7528 12.6335 17.294 12.464C17.8622 12.2856 18.3909 12.211 18.854 12.284C19.413 12.374 19.993 12.634 20.424 13.034C20.818 13.414 21.354 14.004 21.694 14.404C21.8925 14.6568 21.9984 14.9675 21.994 15.284V18.284C22.0039 18.5479 21.9497 18.8093 21.8361 19.047C21.7226 19.2847 21.5531 19.4921 21.3424 19.6527C21.1317 19.8134 20.8857 19.9229 20.6258 19.9717C20.3659 20.0206 20.0988 20.0072 19.844 19.932C19.404 19.792 15.944 18.22 13.024 15.24C10.104 12.32 8.52401 8.90001 8.37401 8.46001C8.29877 8.20521 8.28536 7.93815 8.33421 7.67827C8.38306 7.41838 8.4926 7.17238 8.65326 6.9617C8.81392 6.75103 9.02132 6.58157 9.25901 6.46801C9.49671 6.35445 9.75813 6.30026 10.024 6.31001H13C13.2652 6.3072 13.5279 6.3613 13.7657 6.46943C14.0036 6.57756 14.2154 6.73694 14.3861 6.93573C14.5569 7.13452 14.6828 7.36794 14.7542 7.61933C14.8256 7.87071 14.8409 8.13431 14.8 8.39401C14.72 8.83401 16.29 12.3 19.21 15.22C20.0489 16.0444 20.7143 16.8721 21.194 17.684C21.3983 18.0151 21.7008 18.2726 22.06 18.42V16.92Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <span>+1 (555) 123-4567</span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg className="w-5 h-5 mr-2 text-gray-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 21C15.5 18 20.5 15 20.5 9C20.5 5.68629 17.8137 3 14.5 3C12.7446 3 11.0859 3.78571 9.95215 5.14615C8.8184 6.50658 8.3289 8.32181 8.59911 10.1148C8.86931 11.9079 9.8798 13.5256 11.4 14.5C10.4 14.75 9.36667 14.9167 8.3 15C7.73648 15.0091 7.18254 14.8841 6.6875 14.6375C6.19246 14.3909 5.77204 14.0324 5.46401 13.594C5.15597 13.1556 4.97036 12.6527 4.92401 12.129C4.87766 11.6052 4.97224 11.0762 5.19401 10.6C5.19401 10.6 4.71401 8.69 5.85401 7.29C5.85401 7.29 7.62401 9.51 8.90401 10.11C8.90401 10.11 8.38401 7.41 9.06401 6.02C9.06401 6.02 10.924 7.91 13.474 7.91C14.9713 7.90321 16.4073 7.3125 17.474 6.25C18.5408 5.1875 19.1405 3.75759 19.154 2.26C19.154 2.26 20.294 3.66 20.294 5.7C20.294 7.74 18.714 9.87 16.444 11.4C17.2211 12.3179 17.7632 13.4134 18.024 14.58C18.2847 15.7467 18.2555 16.9533 17.939 18.1C16.939 21.6 12 21 12 21Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <span>123 Blockchain Street, Cryptocity, CA 94567</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </footer>
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+
+ <script>
+        // Live price update from CoinGecko API
+        async function updatePrice() {
+            try {
+                const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=stellar&vs_currencies=usd');
+                const data = await res.json();
+                document.getElementById('price').textContent = `$${data.stellar.usd.toFixed(4)}`;
+            } catch (error) {
+                document.getElementById('price').textContent = 'Error loading price';
+                console.error('Error fetching price:', error);
+            }
+        }
+
+        // Update price every 30 seconds
+        setInterval(updatePrice, 30000);
+        updatePrice();
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
