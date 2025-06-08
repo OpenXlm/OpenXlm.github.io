@@ -2,28 +2,24 @@ VERSION="2.2.0"
 NETWORK_PASSPHRASE="Public Global Stellar Network ; September 2015"
 
 ACCOUNTS=[
-""
+"GDYPACLTNOJE3NO34M3QQTYIYZUKN4EGCVSMMPPADCIA3PPHNP3BPONF"
 ]
 
 [DOCUMENTATION]
-ORG_NAME=""
-ORG_URL=""
-ORG_LOGO=""
-ORG_SUPPORT_EMAIL=""
-ORG_DESCRIPTION=""
-
-[[PRINCIPALS]]
-email=""
+ORG_NAME="OpenXLM"
+ORG_URL="https://openxlm.gitHub.io"
+ORG_LOGO="https://openxlm.gitHub.io/images/logo.png"
+ORG_SUPPORT_EMAIL="blockbytepro@gmail.com"
+ORG_DESCRIPTION="The OpenXLM team has taken on the ability to manage long-term financial projects on the Stellar blockchain using artificial intelligence. Years of trading and programming experience have led to the growth of this team, which is determined to share the profits earned from its projects with the company's future shareholders."
 
 [[CURRENCIES]]
-code=""
-name=""
-issuer=""
+code="OPENXLM"
+name="OpenXLM"
+issuer="GDYPACLTNOJE3NO34M3QQTYIYZUKN4EGCVSMMPPADCIA3PPHNP3BPONF"
 is_asset_anchored=false
 display_decimals=7
-desc=""
-image=""
-conditions=""
+desc="The OPENXLM Token is being pre-sold with the aim of providing profits to its customers at the lowest price, and one of its capabilities is the significant growth in the token price in the coming years, given the permanence of this project on GitHub."
+image="https://openxlm.gitHub.io/images/logo.png"
+conditions="Allowed for long-term buying, selling and holding"
 status="live"
-anchor_asset_type=""
-fixed_number=
+fixed_number=100000000000
