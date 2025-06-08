@@ -26,4 +26,4 @@ If you found this project useful, consider:
 
 ⭐ Giving this repo a star on GitHub
 💬 Sharing it with others in the Stellar community
-🏦 Donating XLM to: GAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+🏦 Donating XLM to: GBKT6NPRESOFZ2ZQRCWUQHNIS7YIVH4O434AX4YDK4EGNN4K5OD6XQNJ
