@@ -24,7 +24,7 @@ a {
   height: 100%;
   pointer-events: none;
   background: radial-gradient(circle at center, #00F3FF20 0%, transparent 70%);
-  animation: twinkle 10s infinite;
+  animation: twinkle 1000s ;
 }
 @keyframes twinkle {
   0% { background-position: 0% 0%; }
