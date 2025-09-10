@@ -65,7 +65,7 @@ a {
   cursor: pointer;
   font-weight: bold;
   transition: 0.3s;
-  margin: 1px;
+  margin: 10px;
 }
 .cta-btn:hover {
   background: #00cfe0;
@@ -162,4 +162,5 @@ a {
     align-items: center;
   }
 }
+
 
