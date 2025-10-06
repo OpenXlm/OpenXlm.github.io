@@ -187,27 +187,6 @@
     renderer.render(scene, camera);
   }
   
-        document.getElementById('copyIcon').addEventListener('click', async () => {
-            const address = document.getElementById('stellarAddress').textContent;
-            try {
-                await navigator.clipboard.writeText(address);
-                
-                // Visual feedback
-                const icon = document.getElementById('copyIcon');
-                icon.classList.add('copy-success');
-                icon.innerHTML = '<path d="M5 13l4 4L19 7"/>';
-                
-                // Reset after 2 seconds
-                setTimeout(() => {
-                    icon.classList.remove('copy-success');
-                    icon.innerHTML = '<path d="M8 16H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2m-6 12h8a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"/>';
-                }, 2000);
-            } catch (err) {
-                console.error('Failed to copy: ', err);
-                alert('Failed to copy address. Please try again.');
-            }
-        });
-  
 </script>
   
 </body>
